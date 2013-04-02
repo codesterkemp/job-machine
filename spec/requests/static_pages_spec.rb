@@ -49,10 +49,10 @@ end
       page.should have_selector('h1', text: 'Contact')
     end
 
-    it "should have the title 'Contact'" do
+    it "should have the base title" do
       visit contact_path
       page.should have_selector('title',
-                    text: "Job Machine App | Contact")
+                    :text => "Job Machine App")
 
     end
   end

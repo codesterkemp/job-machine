@@ -1,4 +1,10 @@
 Jobmachine::Application.routes.draw do
+  resources :microposts
+
+
+  resources :users
+
+
   root :to => "static_pages#home"
 
   match '/help', to: 'static_pages#help'
@@ -7,10 +13,7 @@ Jobmachine::Application.routes.draw do
 
   match '/contact', to: 'static_pages#contact'
 
-  resources :microposts
 
-
-  resources :users
 
   
     
