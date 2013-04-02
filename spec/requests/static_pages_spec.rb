@@ -1,82 +1,47 @@
 require 'spec_helper'
 # this line above matters
 describe "StaticPages" do
+  
+  subject { page }
 
   describe "Home page" do
-      before { visit root_path }
+    before { visit root_path }
 
-    it "should have the h1 'Job Machine App'" do
-        #only the lines below matter + the 1 at the top of the page
-      page.should have_selector('h1', :text => 'Home')
+      it { should have_selector('h1', text: 'Home') }
+      it { should have_selector('title', text: full_title('')) }
+      it { should_not have_selector 'title', text: '|Home' }
     end
-
-     it "should have the base title" do
-      page.should have_selector('title',
-                        :text => "Job Machine App")
-  end
-
-  it "should not have a custom page title" do
-    page.should_not have_selector('title', :text => '|Home')
-  end
-end
-
-
 
   describe "Help page" do
+    before { visit help_path }
 
-    it "should have the h1 'Help'" do
-        visit help_path
-        page.should have_selector('h1', :text => 'Help')
-    end
-
-     it "should have the base title" do
-      visit help_path
-      page.should have_selector('title',
-                        :text => "Job Machine App")
-  end
-end
-
-#   it "should not have a custom page title" do
-#     visit '/static_pages/home'
-#     page.should_not have_selector('title', :text => '|Help')
-#   end
-# end
-
-  describe "Contact page" do
-
-     it "should have the h1 'Contact'" do
-      visit contact_path
-      page.should have_selector('h1', text: 'Contact')
-    end
-
-    it "should have the base title" do
-      visit contact_path
-      page.should have_selector('title',
-                    :text => "Job Machine App")
-
-    end
+    it { should have_selector('h1',    text: 'Help') }
+    it { should have_selector('title', text: full_title('')) }
   end
 
-  describe "About page" do
 
-    it "should have the h1 'About Us'" do
-        visit about_path
-        page.should have_selector('h1', :text => 'About Us')
-    end
+ describe "About page" do
+   before { visit about_path }
 
-      it "should have the base title" do
-      visit about_path
-      page.should have_selector('title',
-                        :text => "Job Machine App")
+    it { should have_selector('h1',    text: 'About') }
+    it { should have_selector('title', text: full_title('')) }
   end
-end
 
-#   it "should not have a custom page title" do
-#     visit '/static_pages/home'
-#     page.should_not have_selector('title', :text => '|About')
-#     end
-#   end
+
+   describe "Contact page" do
+     before { visit contact_path }
+
+     it {should have_selector('h1',    text: 'Contact') }
+     it {should have_selector('title', text: full_title('')) }
+   end
  end
+
+ 
+
+ 
+
+
+ 
 
 
 
