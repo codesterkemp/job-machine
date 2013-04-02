@@ -3,22 +3,19 @@ require 'spec_helper'
 describe "StaticPages" do
 
   describe "Home page" do
-
+      before { visit root_path }
 
     it "should have the h1 'Job Machine App'" do
         #only the lines below matter + the 1 at the top of the page
-      visit root_path
       page.should have_selector('h1', :text => 'Home')
     end
 
      it "should have the base title" do
-      visit root_path
       page.should have_selector('title',
                         :text => "Job Machine App")
   end
 
   it "should not have a custom page title" do
-    visit root_path
     page.should_not have_selector('title', :text => '|Home')
   end
 end
